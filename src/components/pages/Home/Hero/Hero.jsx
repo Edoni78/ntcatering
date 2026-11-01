@@ -32,11 +32,11 @@ function Hero() {
         return
       }
 
-      gsap.set(image, { scale: 1.08 })
-      gsap.set(lines, { yPercent: 110 })
-      gsap.set(aside, { x: 28, autoAlpha: 0 })
-      gsap.set(copy, { y: 36, autoAlpha: 0 })
-      gsap.set(scroll, { y: 18, autoAlpha: 0 })
+      gsap.set(image, { scale: 1.05 })
+      gsap.set(lines, { yPercent: 40 })
+      gsap.set(aside, { x: 12, autoAlpha: 0 })
+      gsap.set(copy, { y: 8, autoAlpha: 0 })
+      gsap.set(scroll, { y: 6, autoAlpha: 0 })
 
       let started = false
 
@@ -46,11 +46,11 @@ function Hero() {
 
         gsap
           .timeline({ defaults: { ease: 'power3.out' } })
-          .to(image, { scale: 1, duration: 2.2, ease: 'power2.out' }, 0)
-          .to(lines, { yPercent: 0, duration: 1.05, stagger: 0.1 }, 0.12)
-          .to(aside, { x: 0, autoAlpha: 1, duration: 0.95 }, 0.28)
-          .to(copy, { y: 0, autoAlpha: 1, duration: 1 }, 0.42)
-          .to(scroll, { y: 0, autoAlpha: 1, duration: 0.75 }, 0.62)
+          .to(image, { scale: 1, duration: 1.15, ease: 'power2.out' }, 0)
+          .to(lines, { yPercent: 0, duration: 0.55, stagger: 0.05 }, 0.04)
+          .to(aside, { x: 0, autoAlpha: 1, duration: 0.5 }, 0.1)
+          .to(copy, { y: 0, autoAlpha: 1, duration: 0.5 }, 0.16)
+          .to(scroll, { y: 0, autoAlpha: 1, duration: 0.4 }, 0.22)
       }
 
       gsap.fromTo(

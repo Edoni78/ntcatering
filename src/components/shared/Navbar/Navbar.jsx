@@ -8,13 +8,13 @@ import './Navbar.css'
 gsap.registerPlugin(useGSAP)
 
 const leftLinks = [
-  { href: '#services', label: 'Shërbimet' },
-  { href: '#about', label: 'Rreth nesh' },
+  { href: '/#services', label: 'Shërbimet' },
+  { href: '/#about', label: 'Rreth nesh' },
 ]
 
 const rightLinks = [
-  { href: '#gallery', label: 'Galeria' },
-  { href: '#contact', label: 'Kontakti' },
+  { href: '/#gallery', label: 'Galeria' },
+  { to: '/kontakt', label: 'Kontakti' },
 ]
 
 const menuLinks = [...leftLinks, ...rightLinks]
@@ -138,21 +138,27 @@ function Navbar() {
           </nav>
 
           <Link to="/" className="navbar__brand" onClick={closeMenu}>
-            <img src={logo} alt="N+T Catering" />
+            <img src={logo} alt="NT Catering" />
           </Link>
 
           <div className="navbar__cluster navbar__cluster--right">
             <nav className="navbar__cluster-links" aria-label="Dytësore">
-              {rightLinks.map((link) => (
-                <a key={link.href} className="navbar__link" href={link.href}>
-                  {link.label}
-                </a>
-              ))}
+              {rightLinks.map((link) =>
+                link.to ? (
+                  <Link key={link.to} className="navbar__link" to={link.to} onClick={closeMenu}>
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a key={link.href} className="navbar__link" href={link.href}>
+                    {link.label}
+                  </a>
+                ),
+              )}
             </nav>
 
-            <a className="navbar__cta" href="#plan">
+            <Link className="navbar__cta" to="/planifiko-eventin" onClick={closeMenu}>
               Planifiko eventin
-            </a>
+            </Link>
 
             <button
               className={`navbar__toggle ${open ? 'is-open' : ''}`}
@@ -177,20 +183,32 @@ function Navbar() {
       >
         <div className="navbar__menu-pattern" aria-hidden="true" />
         <nav className="navbar__menu-nav" aria-label="Menuja">
-          {menuLinks.map((link, index) => (
-            <a
-              key={link.href}
-              className="navbar__menu-item navbar__menu-link"
-              href={link.href}
-              onClick={closeMenu}
-            >
-              <span className="navbar__menu-index">{String(index + 1).padStart(2, '0')}</span>
-              <span className="navbar__menu-label">{link.label}</span>
-            </a>
-          ))}
-          <a className="navbar__menu-item navbar__menu-cta" href="#plan" onClick={closeMenu}>
+          {menuLinks.map((link, index) =>
+            link.to ? (
+              <Link
+                key={link.to}
+                className="navbar__menu-item navbar__menu-link"
+                to={link.to}
+                onClick={closeMenu}
+              >
+                <span className="navbar__menu-index">{String(index + 1).padStart(2, '0')}</span>
+                <span className="navbar__menu-label">{link.label}</span>
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                className="navbar__menu-item navbar__menu-link"
+                href={link.href}
+                onClick={closeMenu}
+              >
+                <span className="navbar__menu-index">{String(index + 1).padStart(2, '0')}</span>
+                <span className="navbar__menu-label">{link.label}</span>
+              </a>
+            ),
+          )}
+          <Link className="navbar__menu-item navbar__menu-cta" to="/planifiko-eventin" onClick={closeMenu}>
             Planifiko eventin
-          </a>
+          </Link>
         </nav>
         <p className="navbar__menu-item navbar__menu-foot">Evente të kuruara me kujdes</p>
       </div>

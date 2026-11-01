@@ -65,12 +65,12 @@ function Menus() {
       const table = root.querySelector('.menus__table')
       const actions = root.querySelector('.menus__actions')
 
-      gsap.set(label, { y: 14, autoAlpha: 0 })
-      gsap.set(lines, { yPercent: 110 })
-      gsap.set(lead, { y: 16, autoAlpha: 0 })
-      gsap.set(cols, { y: 28, autoAlpha: 0 })
-      gsap.set(rows, { y: 18, autoAlpha: 0 })
-      gsap.set(ctas, { y: 16, autoAlpha: 0 })
+      gsap.set(label, { y: 6, autoAlpha: 0 })
+      gsap.set(lines, { yPercent: 35 })
+      gsap.set(lead, { y: 6, autoAlpha: 0 })
+      gsap.set(cols, { y: 8, autoAlpha: 0 })
+      gsap.set(rows, { y: 6, autoAlpha: 0 })
+      gsap.set(ctas, { y: 6, autoAlpha: 0 })
 
       gsap
         .timeline({
@@ -81,16 +81,16 @@ function Menus() {
             once: true,
           },
         })
-        .to(label, { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power2.out' }, 0)
-        .to(lines, { yPercent: 0, duration: 1.15, stagger: 0.12 }, 0.05)
-        .to(lead, { y: 0, autoAlpha: 1, duration: 0.75, ease: 'power2.out' }, 0.2)
-        .to(cols, { y: 0, autoAlpha: 1, duration: 0.95, stagger: 0.12 }, 0.22)
+        .to(label, { y: 0, autoAlpha: 1, duration: 0.4, ease: 'power2.out' }, 0)
+        .to(lines, { yPercent: 0, duration: 0.55, stagger: 0.05 }, 0.04)
+        .to(lead, { y: 0, autoAlpha: 1, duration: 0.4, ease: 'power2.out' }, 0.08)
+        .to(cols, { y: 0, autoAlpha: 1, duration: 0.5, stagger: 0.05 }, 0.1)
 
       gsap.to(rows, {
         y: 0,
         autoAlpha: 1,
-        duration: 0.7,
-        stagger: 0.06,
+        duration: 0.4,
+        stagger: 0.03,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: table,
@@ -102,8 +102,8 @@ function Menus() {
       gsap.to(ctas, {
         y: 0,
         autoAlpha: 1,
-        duration: 0.75,
-        stagger: 0.1,
+        duration: 0.4,
+        stagger: 0.04,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: actions,
@@ -168,7 +168,7 @@ function Menus() {
         <div className="menus__actions">
           <span className="menus__spacer" aria-hidden />
           {menus.map((menu) => (
-            <a className="menus__cta" href="#plan" key={`cta-${menu.index}`}>
+            <a className="menus__cta" href="/planifiko-eventin" key={`cta-${menu.index}`}>
               Planifiko eventin
               <HiArrowUpRight />
             </a>

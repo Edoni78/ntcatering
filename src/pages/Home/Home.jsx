@@ -5,6 +5,7 @@ import EventIndex from '../../components/pages/Home/EventIndex/EventIndex'
 import Clients from '../../components/pages/Home/Clients/Clients'
 import Notes from '../../components/pages/Home/Notes/Notes'
 import Menus from '../../components/pages/Home/Menus/Menus'
+import Gallery from '../../components/pages/Home/Gallery/Gallery'
 import Finale from '../../components/pages/Home/Finale/Finale'
 
 function Home() {
@@ -17,6 +18,7 @@ function Home() {
       <Clients />
       <Notes />
       <Menus />
+      <Gallery />
       <Finale />
     </main>
   )

@@ -45,7 +45,7 @@ const events = [
     meta: 'Në shtëpi',
     copy: 'Darka të mbyllura ku identiteti ynë ndihet në çdo detaj të tryezës.',
     image: imgPrivate,
-    alt: 'Peceta N+T Catering',
+    alt: 'Peceta NT Catering',
   },
 ]
 
@@ -66,11 +66,11 @@ function EventIndex() {
       const media = root.querySelector('.event-index__media')
       const caption = root.querySelector('.event-index__caption')
 
-      gsap.set(lines, { yPercent: 110 })
-      gsap.set(lead, { y: 16, autoAlpha: 0 })
-      gsap.set(items, { y: 28, autoAlpha: 0 })
+      gsap.set(lines, { yPercent: 35 })
+      gsap.set(lead, { y: 6, autoAlpha: 0 })
+      gsap.set(items, { y: 8, autoAlpha: 0 })
       gsap.set(media, { clipPath: 'inset(100% 0 0 0)' })
-      gsap.set(caption, { y: 12, autoAlpha: 0 })
+      gsap.set(caption, { y: 6, autoAlpha: 0 })
 
       gsap
         .timeline({
@@ -81,11 +81,11 @@ function EventIndex() {
             once: true,
           },
         })
-        .to(lines, { yPercent: 0, duration: 1.15, stagger: 0.12 }, 0)
-        .to(lead, { y: 0, autoAlpha: 1, duration: 0.8, ease: 'power2.out' }, 0.18)
-        .to(media, { clipPath: 'inset(0% 0 0 0)', duration: 1.4, ease: 'power2.inOut' }, 0.2)
-        .to(items, { y: 0, autoAlpha: 1, duration: 0.9, stagger: 0.08 }, 0.28)
-        .to(caption, { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power2.out' }, 0.55)
+        .to(lines, { yPercent: 0, duration: 0.55, stagger: 0.05 }, 0)
+        .to(lead, { y: 0, autoAlpha: 1, duration: 0.4, ease: 'power2.out' }, 0.06)
+        .to(media, { clipPath: 'inset(0% 0 0 0)', duration: 0.75, ease: 'power2.inOut' }, 0.08)
+        .to(items, { y: 0, autoAlpha: 1, duration: 0.45, stagger: 0.04 }, 0.1)
+        .to(caption, { y: 0, autoAlpha: 1, duration: 0.4, ease: 'power2.out' }, 0.22)
         .add(() => {
           gsap.set(items, { clearProps: 'transform,opacity,visibility' })
         })
@@ -98,7 +98,7 @@ function EventIndex() {
   )
 
   return (
-    <section className="event-index" id="gallery" aria-label="Indeksi i eventeve" ref={rootRef}>
+    <section className="event-index" id="events" aria-label="Indeksi i eventeve" ref={rootRef}>
       <div className="container event-index__inner">
         <header className="event-index__header">
           <h2 className="event-index__heading">

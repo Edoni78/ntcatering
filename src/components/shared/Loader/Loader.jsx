@@ -81,7 +81,7 @@ function Loader() {
       className={`is-playing${done ? ' is-done' : ''}`}
       role="status"
       aria-live="polite"
-      aria-label="Duke u ngarkuar N+T Catering"
+      aria-label="Duke u ngarkuar NT Catering"
     >
       <div className="pl-panel pl-top" />
       <div className="pl-panel pl-bottom" />

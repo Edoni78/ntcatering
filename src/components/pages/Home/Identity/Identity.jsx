@@ -27,7 +27,7 @@ function Identity() {
         i += 1
         setTyped(TITLE.slice(0, i))
         if (i >= TITLE.length) window.clearInterval(intervalId)
-      }, 180)
+      }, 42)
     }
 
     const observer = new IntersectionObserver(
@@ -49,7 +49,7 @@ function Identity() {
   return (
     <section className="identity" id="identity" aria-label="Identiteti ynë" ref={rootRef}>
       <figure className="identity__bleed">
-        <img src={identityImage} alt="Peceta N+T Catering" />
+        <img src={identityImage} alt="Peceta NT Catering" />
         <h2 className="identity__title">
           <span className="identity__ghost" aria-hidden>
             {TITLE}

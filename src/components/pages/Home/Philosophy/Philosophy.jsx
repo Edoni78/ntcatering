@@ -35,8 +35,8 @@ function Philosophy() {
         willChange: 'clip-path',
       })
       gsap.set([thumbImg, frameImg], { scale: 1.08, willChange: 'transform' })
-      gsap.set(lines, { yPercent: 110, willChange: 'transform' })
-      gsap.set([book, note], { y: 15, autoAlpha: 0, willChange: 'transform, opacity' })
+      gsap.set(lines, { yPercent: 35, willChange: 'transform' })
+      gsap.set([book, note], { y: 6, autoAlpha: 0, willChange: 'transform, opacity' })
 
       const clearWill = () => {
         gsap.set([thumb, frame, thumbImg, frameImg, lines, book, note], {
@@ -56,38 +56,38 @@ function Philosophy() {
         })
         .to(
           book,
-          { autoAlpha: 1, y: 0, duration: 0.8 * timeScale, ease: 'power2.out' },
+          { autoAlpha: 1, y: 0, duration: 0.45 * timeScale, ease: 'power2.out' },
           0,
         )
         .to(
           lines,
-          { yPercent: 0, duration: 1.2 * timeScale, stagger: 0.15, ease: 'power3.out' },
-          0.08,
+          { yPercent: 0, duration: 0.55 * timeScale, stagger: 0.06, ease: 'power3.out' },
+          0.04,
         )
         .to(
           frame,
-          { clipPath: 'inset(0% 0 0 0)', duration: 1.5 * timeScale, ease: 'power2.inOut' },
-          0.22,
+          { clipPath: 'inset(0% 0 0 0)', duration: 0.85 * timeScale, ease: 'power2.inOut' },
+          0.08,
         )
         .to(
           frameImg,
-          { scale: 1, duration: 1.5 * timeScale, ease: 'power2.inOut' },
-          0.22,
+          { scale: 1, duration: 0.85 * timeScale, ease: 'power2.inOut' },
+          0.08,
         )
         .to(
           thumb,
-          { clipPath: 'inset(0% 0 0 0)', duration: 1.2 * timeScale, ease: 'power2.inOut' },
-          0.47,
+          { clipPath: 'inset(0% 0 0 0)', duration: 0.7 * timeScale, ease: 'power2.inOut' },
+          0.22,
         )
         .to(
           thumbImg,
-          { scale: 1, duration: 1.2 * timeScale, ease: 'power2.inOut' },
-          0.47,
+          { scale: 1, duration: 0.7 * timeScale, ease: 'power2.inOut' },
+          0.22,
         )
         .to(
           note,
-          { autoAlpha: 1, y: 0, duration: 0.8 * timeScale, ease: 'power2.out' },
-          0.82,
+          { autoAlpha: 1, y: 0, duration: 0.4 * timeScale, ease: 'power2.out' },
+          0.38,
         )
 
       if (!isMobile) {
@@ -166,7 +166,7 @@ function Philosophy() {
             </div>
           </div>
 
-          <a className="philosophy__book" href="#plan">
+          <a className="philosophy__book" href="/planifiko-eventin">
             (Planifiko)
           </a>
 

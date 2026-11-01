@@ -31,7 +31,7 @@ function Finale() {
 
       gsap.set(wash, { autoAlpha: 0 })
       gsap.set(image, { filter: 'blur(16px) saturate(0.82)', scale: 1.12 })
-      gsap.set(copy, { y: 18, autoAlpha: 0 })
+      gsap.set(copy, { y: 6, autoAlpha: 0 })
 
       gsap
         .timeline({

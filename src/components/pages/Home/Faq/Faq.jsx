@@ -45,9 +45,9 @@ function Faq() {
       const lead = root.querySelector('.faq__lead')
       const items = root.querySelectorAll('.faq__item')
 
-      gsap.set(lines, { yPercent: 110 })
-      gsap.set(lead, { y: 16, autoAlpha: 0 })
-      gsap.set(items, { y: 18, autoAlpha: 0 })
+      gsap.set(lines, { yPercent: 35 })
+      gsap.set(lead, { y: 6, autoAlpha: 0 })
+      gsap.set(items, { y: 6, autoAlpha: 0 })
 
       gsap
         .timeline({
@@ -58,9 +58,9 @@ function Faq() {
             once: true,
           },
         })
-        .to(lines, { yPercent: 0, duration: 1.1, stagger: 0.12 }, 0)
-        .to(lead, { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power2.out' }, 0.16)
-        .to(items, { y: 0, autoAlpha: 1, duration: 0.75, stagger: 0.07 }, 0.22)
+        .to(lines, { yPercent: 0, duration: 0.5, stagger: 0.05 }, 0)
+        .to(lead, { y: 0, autoAlpha: 1, duration: 0.4, ease: 'power2.out' }, 0.06)
+        .to(items, { y: 0, autoAlpha: 1, duration: 0.4, stagger: 0.04 }, 0.08)
     },
     { scope: rootRef },
   )

@@ -103,9 +103,9 @@ function Notes() {
       const cards = root.querySelectorAll('.notes__card')
       const images = root.querySelectorAll('.notes__media img')
 
-      gsap.set(lines, { yPercent: 110 })
-      gsap.set([lead, nav], { y: 14, autoAlpha: 0 })
-      gsap.set(cards, { y: 32, autoAlpha: 0 })
+      gsap.set(lines, { yPercent: 35 })
+      gsap.set([lead, nav], { y: 6, autoAlpha: 0 })
+      gsap.set(cards, { y: 8, autoAlpha: 0 })
       gsap.set(images, { scale: 1.08 })
 
       gsap
@@ -117,11 +117,11 @@ function Notes() {
             once: true,
           },
         })
-        .to(lines, { yPercent: 0, duration: 1.15, stagger: 0.12 }, 0)
-        .to(lead, { y: 0, autoAlpha: 1, duration: 0.75, ease: 'power2.out' }, 0.16)
-        .to(nav, { y: 0, autoAlpha: 1, duration: 0.75, ease: 'power2.out' }, 0.2)
-        .to(cards, { y: 0, autoAlpha: 1, duration: 0.9, stagger: 0.08 }, 0.28)
-        .to(images, { scale: 1, duration: 1.4, ease: 'power2.out', stagger: 0.08 }, 0.28)
+        .to(lines, { yPercent: 0, duration: 0.55, stagger: 0.05 }, 0)
+        .to(lead, { y: 0, autoAlpha: 1, duration: 0.4, ease: 'power2.out' }, 0.06)
+        .to(nav, { y: 0, autoAlpha: 1, duration: 0.4, ease: 'power2.out' }, 0.08)
+        .to(cards, { y: 0, autoAlpha: 1, duration: 0.5, stagger: 0.04 }, 0.1)
+        .to(images, { scale: 1, duration: 0.7, ease: 'power2.out', stagger: 0.04 }, 0.1)
         .add(() => {
           gsap.set(images, { clearProps: 'transform' })
         })

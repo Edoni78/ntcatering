@@ -13,7 +13,7 @@ const clients = [
     name: 'Vila Arbëri',
     detail: 'Elira K. — Prishtinë',
     quote:
-      'N+T e kompozon një darkë ashtu siç shpresonim të ndihej një mbrëmje e vërtetë.',
+      'NT e kompozon një darkë ashtu siç shpresonim të ndihej një mbrëmje e vërtetë.',
   },
   {
     index: '02',
@@ -51,8 +51,8 @@ function Clients() {
       const quote = root.querySelector('.clients__quote')
       const items = root.querySelectorAll('.clients__item')
 
-      gsap.set(quote, { y: 28, autoAlpha: 0 })
-      gsap.set(items, { y: 24, autoAlpha: 0 })
+      gsap.set(quote, { y: 8, autoAlpha: 0 })
+      gsap.set(items, { y: 6, autoAlpha: 0 })
 
       gsap
         .timeline({
@@ -66,8 +66,8 @@ function Clients() {
             gsap.set(items, { clearProps: 'opacity,visibility,transform' })
           },
         })
-        .to(quote, { y: 0, autoAlpha: 1, duration: 1.1 }, 0)
-        .to(items, { y: 0, autoAlpha: 1, duration: 0.85, stagger: 0.1 }, 0.22)
+        .to(quote, { y: 0, autoAlpha: 1, duration: 0.5 }, 0)
+        .to(items, { y: 0, autoAlpha: 1, duration: 0.45, stagger: 0.05 }, 0.08)
 
       const refresh = () => ScrollTrigger.refresh()
       document.addEventListener('preloader:done', refresh)
