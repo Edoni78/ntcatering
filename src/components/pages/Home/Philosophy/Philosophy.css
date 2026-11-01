@@ -1,0 +1,190 @@
+.philosophy {
+  overflow-x: clip;
+  background: var(--burgundy);
+  color: var(--cream);
+}
+
+/* Version 1 — overlapping photos
+.philosophy__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(32px, 6vw, 96px);
+  min-height: 100svh;
+  padding-block: clamp(72px, 10vh, 128px);
+}
+
+.philosophy__text {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: clamp(52px, 7.4vw, 118px);
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+
+.philosophy__photos {
+  position: relative;
+  min-height: min(78vh, 720px);
+}
+
+.philosophy__photo {
+  position: absolute;
+  object-fit: cover;
+}
+
+.philosophy__photo--back {
+  top: 0;
+  right: 0;
+  width: 72%;
+  height: 78%;
+}
+
+.philosophy__photo--front {
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 58%;
+  height: 62%;
+}
+
+@media (max-width: 900px) {
+  .philosophy__layout {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding-block: 72px 88px;
+  }
+
+  .philosophy__photos {
+    min-height: min(68vh, 560px);
+  }
+}
+*/
+
+.philosophy__stage {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  align-items: stretch;
+  gap: clamp(28px, 5vw, 80px);
+  padding-block: clamp(72px, 11vh, 128px);
+}
+
+.philosophy__left {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.philosophy__thumb {
+  position: relative;
+  width: min(28%, 168px);
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.philosophy__thumb .philosophy__media {
+  position: absolute;
+  inset: -22%;
+}
+
+.philosophy__thumb img,
+.philosophy__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.philosophy__thumb::after,
+.philosophy__frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(72, 20, 32, 0.22);
+  pointer-events: none;
+}
+
+.philosophy__book {
+  position: absolute;
+  top: 26%;
+  right: 4%;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(244, 232, 217, 0.55);
+}
+
+.philosophy__title {
+  margin: clamp(72px, 12vh, 140px) 0 0;
+  font-family: var(--sans);
+  font-size: clamp(52px, 7.6vw, 108px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.philosophy__line {
+  display: block;
+  overflow: hidden;
+}
+
+.philosophy__line span {
+  display: block;
+}
+
+.philosophy__line--italic span {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.philosophy__note {
+  margin: 28px 0 0;
+  max-width: 16rem;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244, 232, 217, 0.55);
+}
+
+.philosophy__frame {
+  position: relative;
+  margin: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.philosophy__frame .philosophy__media {
+  position: absolute;
+  inset: -12%;
+}
+
+.philosophy__frame::after {
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .philosophy__stage {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .philosophy__book {
+    position: static;
+    align-self: flex-end;
+    margin: 20px 0 8px;
+  }
+
+  .philosophy__title {
+    margin-top: 12px;
+    font-size: clamp(44px, 14vw, 72px);
+  }
+
+  .philosophy__frame {
+    min-height: min(42vh, 360px);
+  }
+}

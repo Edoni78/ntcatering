@@ -1,0 +1,109 @@
+.clients {
+  background: var(--burgundy);
+  color: var(--cream);
+}
+
+.clients__inner {
+  padding-block: clamp(80px, 12vh, 140px);
+}
+
+.clients__quote {
+  max-width: 22ch;
+  margin: 28px 0 0;
+  font-family: var(--sans);
+  font-size: clamp(32px, 5.2vw, 72px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.clients__list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin: clamp(48px, 8vh, 80px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.clients__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 18px 0 0;
+  border: 0;
+  border-top: 2px solid rgba(244, 232, 217, 0.14);
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  opacity: 0.48;
+  transform: translateY(0);
+  transition:
+    border-color 0.55s var(--ease),
+    opacity 0.55s var(--ease),
+    transform 0.55s var(--ease);
+}
+
+.clients__item:hover {
+  opacity: 0.82;
+  transform: translateY(-3px);
+}
+
+.clients__item.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  border-top-color: var(--cream);
+}
+
+.clients__num {
+  margin-bottom: 10px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: rgba(244, 232, 217, 0.45);
+  transition: color 0.55s var(--ease);
+}
+
+.clients__item.is-active .clients__num,
+.clients__item:hover .clients__num {
+  color: rgba(244, 232, 217, 0.8);
+}
+
+.clients__name {
+  font-family: var(--sans);
+  font-size: clamp(18px, 1.6vw, 22px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.clients__detail {
+  margin-top: 8px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244, 232, 217, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clients__item,
+  .clients__num {
+    transition: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .clients__quote {
+    max-width: none;
+  }
+
+  .clients__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .clients__list {
+    grid-template-columns: 1fr;
+  }
+}

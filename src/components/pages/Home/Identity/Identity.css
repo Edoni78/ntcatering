@@ -1,0 +1,72 @@
+.identity {
+  background: var(--cream);
+  color: var(--cream);
+}
+
+.identity__bleed {
+  position: relative;
+  margin: 0;
+  width: 100%;
+}
+
+.identity__bleed img {
+  width: 100%;
+  height: min(100svh, 1080px);
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+}
+
+.identity__title {
+  position: absolute;
+  right: clamp(20px, 4.5vw, 72px);
+  bottom: clamp(28px, 5vh, 56px);
+  z-index: 1;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(40px, 7.4vw, 120px);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  color: var(--cream);
+  white-space: nowrap;
+  text-shadow: 0 2px 24px rgba(72, 20, 32, 0.35);
+}
+
+.identity__ghost {
+  visibility: hidden;
+}
+
+.identity__typed {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.identity__caret {
+  display: inline-block;
+  margin-left: 4px;
+  animation: identity-caret 0.9s steps(1) infinite;
+}
+
+@keyframes identity-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .identity__caret {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .identity__title {
+    font-size: clamp(28px, 9vw, 44px);
+  }
+
+  .identity__bleed img {
+    height: min(78vh, 720px);
+  }
+}
