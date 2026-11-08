@@ -6,50 +6,17 @@ import imgGala from '../../../../assets/home/hero2.png'
 import imgFeast from '../../../../assets/home/ourphilosophy/img1.jpg'
 import imgGarden from '../../../../assets/home/ourphilosophy/img2.jpg'
 import imgPrivate from '../../../../assets/home/ouridentity/identity.png'
+import { useI18n } from '../../../../i18n/I18n'
 import './EventIndex.css'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
-const events = [
-  {
-    index: '01',
-    title: 'Gala',
-    tag: 'Darkë e plotë',
-    meta: 'Nga 40 mysafirë',
-    copy: 'Kuzhinë e rafinuar dhe shërbim i qetë për darka që duhen mbajtur mend.',
-    image: imgGala,
-    alt: 'Darkë e ndriçuar me qirinj',
-  },
-  {
-    index: '02',
-    title: 'Dasma',
-    tag: 'Ditë e plotë',
-    meta: 'Menu e kuruar',
-    copy: 'Nga pritja e parë te torta, çdo pjatë kompozohet me kujdes për ditën tuaj.',
-    image: imgFeast,
-    alt: 'Bruschetta të shërbyera në dërrasë',
-  },
-  {
-    index: '03',
-    title: 'Kopësht',
-    tag: 'Ambient i hapur',
-    meta: 'Tryeza e dritës',
-    copy: 'Catering në natyrë, i vendosur me elegancë mbi lëndinë dhe dritë të butë.',
-    image: imgGarden,
-    alt: 'Tryezë catering-u në ambient të hapur',
-  },
-  {
-    index: '04',
-    title: 'Private',
-    tag: 'Intim',
-    meta: 'Në shtëpi',
-    copy: 'Darka të mbyllura ku identiteti ynë ndihet në çdo detaj të tryezës.',
-    image: imgPrivate,
-    alt: 'Peceta NT Catering',
-  },
-]
+const images = [imgGala, imgFeast, imgGarden, imgPrivate]
 
 function EventIndex() {
+  const { t } = useI18n()
+  const events = t('home.events.items').map((item, index) => ({ ...item, image: images[index] }))
+  const heading = t('home.events.heading')
   const rootRef = useRef(null)
   const [active, setActive] = useState(0)
   const current = events[active]
@@ -98,20 +65,17 @@ function EventIndex() {
   )
 
   return (
-    <section className="event-index" id="events" aria-label="Indeksi i eventeve" ref={rootRef}>
+    <section className="event-index" id="events" aria-label={t('home.events.label')} ref={rootRef}>
       <div className="container event-index__inner">
         <header className="event-index__header">
           <h2 className="event-index__heading">
-            <span className="event-index__line">
-              <span>Indeksi i</span>
-            </span>
-            <span className="event-index__line">
-              <span>eventeve.</span>
-            </span>
+            {heading.map((line) => (
+              <span className="event-index__line" key={line}>
+                <span>{line}</span>
+              </span>
+            ))}
           </h2>
-          <p className="event-index__lead">
-            Nga një darkë intime deri te një festë e tërë, e kompozuar me kujdes.
-          </p>
+          <p className="event-index__lead">{t('home.events.lead')}</p>
         </header>
 
         <div className="event-index__body">

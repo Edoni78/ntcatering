@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import brandMark from '../../../assets/brand.png'
+import { useI18n } from '../../../i18n/I18n'
 import './Loader.css'
 
 let played = false
 
 function Loader() {
+  const { t } = useI18n()
   const reduce =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -81,7 +83,7 @@ function Loader() {
       className={`is-playing${done ? ' is-done' : ''}`}
       role="status"
       aria-live="polite"
-      aria-label="Duke u ngarkuar NT Catering"
+      aria-label={t('loader')}
     >
       <div className="pl-panel pl-top" />
       <div className="pl-panel pl-bottom" />

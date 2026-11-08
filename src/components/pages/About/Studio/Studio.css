@@ -1,0 +1,61 @@
+.about-studio {
+  position: relative;
+  min-height: 72svh;
+  overflow: hidden;
+  background: var(--burgundy);
+  color: #fff;
+}
+
+.about-studio__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-studio__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(72, 20, 32, 0.2) 0%, rgba(72, 20, 32, 0.5) 100%);
+}
+
+.about-studio__copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 72svh;
+  padding-block: 48px 56px;
+}
+
+.about-studio__eyebrow {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.about-studio__copy h2 {
+  max-width: 16ch;
+  margin: 14px 0 0;
+  font-family: var(--sans);
+  font-size: clamp(36px, 5.4vw, 72px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 800px) {
+  .about-studio__copy {
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-studio__copy h2 {
+    margin-inline: auto;
+  }
+}

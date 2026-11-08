@@ -3,42 +3,14 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import SectionLabel from '../../../shared/SectionLabel/SectionLabel'
+import { useI18n } from '../../../../i18n/I18n'
 import './Clients.css'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
-const clients = [
-  {
-    index: '01',
-    name: 'Vila Arbëri',
-    detail: 'Elira K. — Prishtinë',
-    quote:
-      'NT e kompozon një darkë ashtu siç shpresonim të ndihej një mbrëmje e vërtetë.',
-  },
-  {
-    index: '02',
-    name: 'Shtëpia Goga',
-    detail: 'Arben M. — Tiranë',
-    quote:
-      'Çdo pjatë erdhi në kohë, me qetësi dhe kujdes — mysafirët ende flasin për atë natë.',
-  },
-  {
-    index: '03',
-    name: 'Hotel Europa',
-    detail: 'Drita S. — Prizren',
-    quote:
-      'Eleganca e tryezës dhe shija e kuzhinës u ndjenë si një gjest i vetëm, i plotë.',
-  },
-  {
-    index: '04',
-    name: 'Studio Lumi',
-    detail: 'Nora B. — Gjakovë',
-    quote:
-      'Nga pritja e parë te ëmbëlsira e fundit, asgjë nuk dukej e ngutur. Vetëm kujdes.',
-  },
-]
-
 function Clients() {
+  const { t } = useI18n()
+  const clients = t('home.clients.items')
   const rootRef = useRef(null)
   const [active, setActive] = useState(0)
 
@@ -77,9 +49,9 @@ function Clients() {
   )
 
   return (
-    <section className="clients" id="clients" aria-label="Klientët" ref={rootRef}>
+    <section className="clients" id="clients" aria-label={t('home.clients.label')} ref={rootRef}>
       <div className="container clients__inner">
-        <SectionLabel>Klientët</SectionLabel>
+        <SectionLabel>{t('home.clients.label')}</SectionLabel>
         <p className="clients__quote">{clients[active].quote}</p>
 
         <ul className="clients__list">

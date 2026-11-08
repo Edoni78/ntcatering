@@ -1,14 +1,17 @@
 import { Link } from 'react-router-dom'
 import { HiArrowUpRight } from 'react-icons/hi2'
 import defaultImage from '../../../../assets/branding/brand6.png'
+import { useI18n } from '../../../../i18n/I18n'
 import './Cta.css'
 
 function Cta({
   image = defaultImage,
   flush = false,
   to = '/planifiko-eventin',
-  linkLabel = 'Planifiko eventin',
+  linkLabel,
 }) {
+  const { t } = useI18n()
+  const label = linkLabel || t('nav.plan')
   return (
     <section className={`cta${flush ? ' cta--flush' : ''}`} id="plan">
       <div className="cta__frame">
@@ -16,9 +19,9 @@ function Cta({
         <div className="cta__shade" />
         <div className="cta__veil" />
         <div className="cta__copy">
-          <h2 className="cta__title">Kur të jeni gati.</h2>
+          <h2 className="cta__title">{t('cta.title')}</h2>
           <Link className="cta__link btn btn--fill" to={to}>
-            <span>{linkLabel}</span>
+            <span>{label}</span>
             <HiArrowUpRight />
           </Link>
         </div>

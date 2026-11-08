@@ -4,50 +4,17 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import SectionLabel from '../../../shared/SectionLabel/SectionLabel'
+import { useI18n } from '../../../../i18n/I18n'
 import './Menus.css'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
-const menus = [
-  {
-    index: '01',
-    title: 'Menu 1',
-    text: 'Për pritje të lehta, me zgjedhje të kujdesshme në tryezë.',
-    price: '8',
-    unit: '€ / për person',
-  },
-  {
-    index: '02',
-    title: 'Menu 2',
-    text: 'Më e plotë, me meze, tortilla dhe ëmbëlsira.',
-    price: '13,50',
-    unit: '€ / për person',
-  },
-  {
-    index: '03',
-    title: 'Menu 3',
-    text: 'Menuja më e pasur, me fli dhe tre lloje brusketash.',
-    price: '15,50',
-    unit: '€ / për person',
-  },
-]
-
-const rows = [
-  { label: 'Brusketa', values: ['1 lloj (klasik)', '2 lloje', '3 lloje'] },
-  { label: 'Meze e ftohtë', values: ['Djathë, mish, zarzavate', 'Djathë, mish, sos', 'Djathë, mish, zarzavate'] },
-  { label: 'Mini tortilla', values: ['Po', '—', 'Po'] },
-  { label: 'Tortilla', values: ['—', 'Po', 'Po'] },
-  { label: 'Bite-size sandwich', values: ['Tuna, qepë, misër', 'Tuna, qepë, misër', '—'] },
-  { label: 'Sallata', values: ['Sallatë me pasta', 'Sallatë Ruse', 'Sallatë Ruse'] },
-  { label: 'Spinach rolls', values: ['Po', 'Po', 'Po'] },
-  { label: 'Chicken fingers', values: ['—', 'Po', 'Po'] },
-  { label: 'Mini burger', values: ['—', 'Po', '—'] },
-  { label: 'Sallatë frutash', values: ['—', 'Sipas sezonës', '—'] },
-  { label: 'Fli', values: ['—', '—', 'Po'] },
-  { label: 'Ëmbëlsira', values: ['Torte në gotë', 'Ëmbëlsira ose pancake', 'Sallatë frutash'] },
-]
-
 function Menus() {
+  const { t } = useI18n()
+  const heading = t('home.menus.heading')
+  const menus = t('home.menus.items')
+  const rows = t('home.menus.rows')
+  const unit = t('home.menus.unit')
   const rootRef = useRef(null)
 
   useGSAP(
@@ -120,21 +87,18 @@ function Menus() {
   )
 
   return (
-    <section className="menus" id="services" aria-label="Menutë" ref={rootRef}>
+    <section className="menus" id="services" aria-label={t('home.menus.label')} ref={rootRef}>
       <div className="container menus__inner">
         <header className="menus__header">
-          <SectionLabel>Menutë</SectionLabel>
+          <SectionLabel>{t('home.menus.label')}</SectionLabel>
           <h2 className="menus__heading">
-            <span className="menus__line">
-              <span>Tre menu</span>
-            </span>
-            <span className="menus__line">
-              <span>për person.</span>
-            </span>
+            {heading.map((line) => (
+              <span className="menus__line" key={line}>
+                <span>{line}</span>
+              </span>
+            ))}
           </h2>
-          <p className="menus__lead">
-            Çdo menu shërbehet për person. Çmimet janë në euro.
-          </p>
+          <p className="menus__lead">{t('home.menus.lead')}</p>
         </header>
 
         <div className="menus__plans">
@@ -146,7 +110,7 @@ function Menus() {
               <p className="menus__text">{menu.text}</p>
               <p className="menus__price">
                 <span className="menus__amount">{menu.price}</span>
-                <span className="menus__unit">{menu.unit}</span>
+                <span className="menus__unit">{unit}</span>
               </p>
             </div>
           ))}
@@ -169,7 +133,7 @@ function Menus() {
           <span className="menus__spacer" aria-hidden />
           {menus.map((menu) => (
             <a className="menus__cta" href="/planifiko-eventin" key={`cta-${menu.index}`}>
-              Planifiko eventin
+              {t('nav.plan')}
               <HiArrowUpRight />
             </a>
           ))}

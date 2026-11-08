@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { HiArrowUpRight } from 'react-icons/hi2'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -8,38 +9,17 @@ import img1 from '../../../../assets/home/gallery/img1.png'
 import img2 from '../../../../assets/home/gallery/img2.png'
 import img3 from '../../../../assets/home/gallery/img3.png'
 import img4 from '../../../../assets/home/gallery/img4.png'
+import { useI18n } from '../../../../i18n/I18n'
 import './Gallery.css'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
-const works = [
-  {
-    index: '01',
-    title: 'Darkë galerie',
-    meta: 'Gala — 2026',
-    image: img1,
-  },
-  {
-    index: '02',
-    title: 'Tryeza e dritës',
-    meta: 'Kopësht — 2026',
-    image: img2,
-  },
-  {
-    index: '03',
-    title: 'Detaji',
-    meta: 'Private — 2025',
-    image: img3,
-  },
-  {
-    index: '04',
-    title: 'Meze në lëndinë',
-    meta: 'Dasma — 2025',
-    image: img4,
-  },
-]
+const workImages = [img1, img2, img3, img4]
 
 function Gallery() {
+  const { t } = useI18n()
+  const heading = t('home.gallery.heading')
+  const works = t('home.gallery.works').map((item, index) => ({ ...item, image: workImages[index] }))
   const rootRef = useRef(null)
 
   useGSAP(
@@ -82,31 +62,25 @@ function Gallery() {
   )
 
   return (
-    <section className="gallery" id="gallery" aria-label="Galeria" ref={rootRef}>
+    <section className="gallery" id="gallery" aria-label={t('home.gallery.label')} ref={rootRef}>
       <div className="container gallery__head">
-        <SectionLabel>Galeria</SectionLabel>
+        <SectionLabel>{t('home.gallery.label')}</SectionLabel>
 
         <div className="gallery__copy">
           <h2 className="gallery__heading">
-            <span className="gallery__line">
-              <span>Katër projekte,</span>
-            </span>
-            <span className="gallery__line">
-              <span>fotografuar</span>
-            </span>
-            <span className="gallery__line">
-              <span>ngadalë.</span>
-            </span>
+            {heading.map((line) => (
+              <span className="gallery__line" key={line}>
+                <span>{line}</span>
+              </span>
+            ))}
           </h2>
 
           <div className="gallery__row">
-            <p className="gallery__intro">
-              Një përzgjedhje nga tre vitet e fundit — çdo event i kompozuar në vend, në dritë të ditës.
-            </p>
-            <a className="gallery__cta" href="#notes">
-              Shiko të gjitha
+            <p className="gallery__intro">{t('home.gallery.intro')}</p>
+            <Link className="gallery__cta" to="/galeria">
+              {t('home.gallery.all')}
               <HiArrowUpRight />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

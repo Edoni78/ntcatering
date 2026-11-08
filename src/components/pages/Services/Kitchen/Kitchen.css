@@ -1,0 +1,97 @@
+.svc-kitchen {
+  background: var(--burgundy);
+  color: var(--cream);
+}
+
+.svc-kitchen__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+  padding-block: clamp(48px, 8vh, 96px) clamp(72px, 10vh, 128px);
+}
+
+.svc-kitchen__heading {
+  margin: 18px 0 0;
+  font-family: var(--sans);
+  font-size: clamp(40px, 5.6vw, 76px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.svc-kitchen__line {
+  display: block;
+  overflow: visible;
+  padding-block: 0.08em;
+}
+
+.svc-kitchen__line span {
+  display: block;
+}
+
+.svc-kitchen__line:first-child span {
+  color: rgba(244, 232, 217, 0.42);
+}
+
+.svc-kitchen__note {
+  max-width: 28ch;
+  margin: 22px 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(244, 232, 217, 0.55);
+}
+
+.svc-kitchen__photos {
+  position: relative;
+  min-height: min(72vh, 680px);
+}
+
+.svc-kitchen__frame {
+  margin: 0;
+  overflow: hidden;
+}
+
+.svc-kitchen__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.svc-kitchen__frame--main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 74%;
+  height: 78%;
+}
+
+.svc-kitchen__frame--side {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 48%;
+  height: 52%;
+}
+
+@media (max-width: 900px) {
+  .svc-kitchen__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .svc-kitchen__photos {
+    min-height: min(62vh, 520px);
+  }
+
+  .svc-kitchen__copy,
+  .svc-kitchen__heading,
+  .svc-kitchen__note {
+    text-align: center;
+  }
+
+  .svc-kitchen__note {
+    margin-inline: auto;
+  }
+}

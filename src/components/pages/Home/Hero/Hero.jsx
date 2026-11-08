@@ -3,11 +3,13 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import heroImage from '../../../../assets/home/hero2.png'
+import { useI18n } from '../../../../i18n/I18n'
 import './Hero.css'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 function Hero() {
+  const { t } = useI18n()
   const rootRef = useRef(null)
 
   useGSAP(
@@ -97,7 +99,7 @@ function Hero() {
         <div className="hero__parallax">
           <img
             src={heroImage}
-            alt="Pjatë e shërbyer në një darkë me qirinj"
+            alt={t('home.hero.alt')}
             fetchPriority="high"
           />
         </div>
@@ -108,24 +110,19 @@ function Hero() {
         <div className="hero__top">
           <h1>
             <span className="hero__line hero__line--main">
-              <span>Evente të veçanta.</span>
+              <span>{t('home.hero.title')}</span>
             </span>
           </h1>
-          <p className="hero__aside">Frymëzuar nga eleganca.</p>
+          <p className="hero__aside">{t('home.hero.aside')}</p>
         </div>
 
-        <p className="hero__copy">
-          Përvoja catering-u të kuruara me kujdes, ku kuzhina e rafinuar dhe
-          eleganca e përjetshme bashkohen. Nga darkat intime te festimet e mëdha,
-          çdo event kompozohet me kujdes, mjeshtëri dhe luks të qetë — një rast
-          për t’u kujtuar.
-        </p>
+        <p className="hero__copy">{t('home.hero.copy')}</p>
       </div>
 
       <button
         className="hero__scroll"
         type="button"
-        aria-label="Lëviz poshtë"
+        aria-label={t('home.hero.scroll')}
         onClick={() =>
           window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
         }

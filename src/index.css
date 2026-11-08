@@ -138,6 +138,14 @@ main {
   border-color: var(--cream);
 }
 
+@media (max-width: 800px) {
+  h1,
+  h2,
+  h3 {
+    overflow-wrap: break-word;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

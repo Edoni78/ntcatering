@@ -7,50 +7,17 @@ import img1 from '../../../../assets/home/hero2.png'
 import img2 from '../../../../assets/home/ourphilosophy/img1.jpg'
 import img3 from '../../../../assets/home/ourphilosophy/img2.jpg'
 import img4 from '../../../../assets/home/ouridentity/identity.png'
+import { useI18n } from '../../../../i18n/I18n'
 import './Notes.css'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
-const notes = [
-  {
-    kicker: 'Pas kamerës',
-    date: 'Maj 2026',
-    title: 'Një ngjyrë, një gjest',
-    image: img1,
-  },
-  {
-    kicker: 'Shënime',
-    date: 'Maj 2026',
-    title: 'Tryeza në lëndinë',
-    image: img2,
-  },
-  {
-    kicker: 'Detaji',
-    date: 'Prill 2026',
-    title: 'Drita mbi pecetë',
-    image: img3,
-  },
-  {
-    kicker: 'Forma',
-    date: 'Prill 2026',
-    title: 'Kujdes në çdo pjatë',
-    image: img4,
-  },
-  {
-    kicker: 'Pas kamerës',
-    date: 'Mars 2026',
-    title: 'Elegancë e qetë',
-    image: img1,
-  },
-  {
-    kicker: 'Shënime',
-    date: 'Mars 2026',
-    title: 'Në ambient të hapur',
-    image: img2,
-  },
-]
+const noteImages = [img1, img2, img3, img4, img1, img2]
 
 function Notes() {
+  const { t } = useI18n()
+  const heading = t('home.notes.heading')
+  const notes = t('home.notes.items').map((item, index) => ({ ...item, image: noteImages[index] }))
   const rootRef = useRef(null)
   const trackRef = useRef(null)
 
@@ -142,26 +109,23 @@ function Notes() {
   }
 
   return (
-    <section className="notes" id="notes" aria-label="Shënime nga terreni" ref={rootRef}>
+    <section className="notes" id="notes" aria-label={t('home.notes.label')} ref={rootRef}>
       <div className="container notes__intro">
         <h2 className="notes__heading">
-          <span className="notes__line">
-            <span>Shënime nga terreni,</span>
-          </span>
-          <span className="notes__line">
-            <span>mbi dritën dhe vendet.</span>
-          </span>
+          {heading.map((line) => (
+            <span className="notes__line" key={line}>
+              <span>{line}</span>
+            </span>
+          ))}
         </h2>
 
         <div className="notes__meta">
-          <p className="notes__lead">
-            Ese të shkurtra mbi tryezën, vendin dhe kujdesin e ngadaltë.
-          </p>
+          <p className="notes__lead">{t('home.notes.lead')}</p>
           <div className="notes__nav">
             <button
               type="button"
               className="notes__arrow"
-              aria-label="Kartela e mëparshme"
+              aria-label={t('home.notes.prev')}
               onClick={() => scrollByCard(-1)}
             >
               <HiArrowLeft />
@@ -169,7 +133,7 @@ function Notes() {
             <button
               type="button"
               className="notes__arrow"
-              aria-label="Kartela tjetër"
+              aria-label={t('home.notes.next')}
               onClick={() => scrollByCard(1)}
             >
               <HiArrowRight />

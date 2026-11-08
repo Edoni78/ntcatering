@@ -17,15 +17,15 @@
   font-family: var(--sans);
   font-size: clamp(36px, 5.6vw, 80px);
   font-weight: 500;
-  line-height: 0.94;
+  line-height: 1.12;
   letter-spacing: -0.04em;
   text-transform: uppercase;
 }
 
 .gallery__line {
   display: block;
-  overflow: hidden;
-  padding-block: 0.06em;
+  overflow: visible;
+  padding-block: 0.08em;
 }
 
 .gallery__line span {
@@ -144,6 +144,14 @@
 @media (max-width: 800px) {
   .gallery__head {
     grid-template-columns: 1fr;
+  }
+
+  .gallery__heading {
+    font-size: clamp(32px, 9vw, 48px);
+  }
+
+  .gallery__cta {
+    white-space: normal;
   }
 
   .gallery__row {

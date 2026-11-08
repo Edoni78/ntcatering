@@ -25,7 +25,7 @@
   font-family: var(--sans);
   font-size: clamp(40px, 6vw, 84px);
   font-weight: 500;
-  line-height: 0.95;
+  line-height: 1.12;
   letter-spacing: -0.04em;
   text-align: right;
   text-transform: uppercase;
@@ -33,8 +33,8 @@
 
 .plan-calc__line {
   display: block;
-  overflow: hidden;
-  padding-block: 0.06em;
+  overflow: visible;
+  padding-block: 0.08em;
 }
 
 .plan-calc__line span {
@@ -116,7 +116,7 @@
 .plan-calc__amount {
   font-size: clamp(40px, 4.6vw, 64px);
   font-weight: 500;
-  line-height: 0.9;
+  line-height: 1;
   letter-spacing: -0.04em;
 }
 
@@ -188,7 +188,7 @@
   margin: 0;
   font-size: clamp(56px, 8vw, 104px);
   font-weight: 500;
-  line-height: 0.88;
+  line-height: 1;
   letter-spacing: -0.05em;
 }
 
@@ -207,11 +207,11 @@
 @media (max-width: 900px) {
   .plan-calc__header {
     grid-template-columns: 1fr;
-    justify-items: start;
+    justify-items: center;
   }
 
   .plan-calc__heading {
-    text-align: left;
+    text-align: center;
   }
 
   .plan-calc__menus,

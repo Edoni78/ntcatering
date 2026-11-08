@@ -14,15 +14,15 @@
   font-family: var(--sans);
   font-size: clamp(40px, 5.8vw, 80px);
   font-weight: 500;
-  line-height: 0.94;
+  line-height: 1.12;
   letter-spacing: -0.04em;
   text-transform: uppercase;
 }
 
 .faq__line {
   display: block;
-  overflow: hidden;
-  padding-block: 0.06em;
+  overflow: visible;
+  padding-block: 0.08em;
 }
 
 .faq__line span {

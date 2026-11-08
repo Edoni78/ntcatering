@@ -4,11 +4,14 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import img1 from '../../../../assets/home/ourphilosophy/img1.jpg'
 import img2 from '../../../../assets/home/ourphilosophy/img2.jpg'
+import { useI18n } from '../../../../i18n/I18n'
 import './Philosophy.css'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 function Philosophy() {
+  const { t } = useI18n()
+  const lines = t('home.philosophy.lines')
   const rootRef = useRef(null)
 
   useGSAP(
@@ -132,7 +135,7 @@ function Philosophy() {
   )
 
   return (
-    <section className="philosophy" id="about" aria-label="Filozofia jonë" ref={rootRef}>
+    <section className="philosophy" id="about" aria-label={t('home.philosophy.label')} ref={rootRef}>
       {/* Version 1 — overlapping photos
       <div className="container philosophy__layout">
         <p className="philosophy__text">
@@ -162,32 +165,31 @@ function Philosophy() {
         <div className="philosophy__left">
           <div className="philosophy__thumb">
             <div className="philosophy__media">
-              <img src={img2} alt="Tryezë catering-u në ambient të hapur" />
+              <img src={img2} alt={t('home.philosophy.altGarden')} />
             </div>
           </div>
 
           <a className="philosophy__book" href="/planifiko-eventin">
-            (Planifiko)
+            {t('home.philosophy.plan')}
           </a>
 
           <h2 className="philosophy__title">
-            <span className="philosophy__line">
-              <span>Kujdes</span>
-            </span>
-            <span className="philosophy__line philosophy__line--italic">
-              <span>në çdo</span>
-            </span>
-            <span className="philosophy__line">
-              <span>detaj</span>
-            </span>
+            {lines.map((line, index) => (
+              <span
+                className={`philosophy__line${index === 1 ? ' philosophy__line--italic' : ''}`}
+                key={line}
+              >
+                <span>{line}</span>
+              </span>
+            ))}
           </h2>
 
-          <p className="philosophy__note">Evente të kuruara me kujdes</p>
+          <p className="philosophy__note">{t('home.philosophy.note')}</p>
         </div>
 
         <figure className="philosophy__frame">
           <div className="philosophy__media">
-            <img src={img1} alt="Bruschetta të shërbyera në dërrasë druri" />
+            <img src={img1} alt={t('home.philosophy.altBoard')} />
           </div>
         </figure>
       </div>

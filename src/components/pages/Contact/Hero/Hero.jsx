@@ -2,11 +2,13 @@ import { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import heroImage from '../../../../assets/branding/brand5.png'
+import { useI18n } from '../../../../i18n/I18n'
 import '../../Plan/Hero/Hero.css'
 
 gsap.registerPlugin(useGSAP)
 
 function ContactHero() {
+  const { t } = useI18n()
   const rootRef = useRef(null)
 
   useGSAP(
@@ -31,9 +33,9 @@ function ContactHero() {
       <div className="plan-hero__fade" />
 
       <div className="plan-hero__copy">
-        <p className="plan-hero__eyebrow">Kontakti</p>
-        <h1 id="contact-hero-title">Na shkruani.</h1>
-        <p className="plan-hero__lead">Një fjali mjafton — data, vendi dhe mysafirët.</p>
+        <p className="plan-hero__eyebrow">{t('contact.eyebrow')}</p>
+        <h1 id="contact-hero-title">{t('contact.title')}</h1>
+        <p className="plan-hero__lead">{t('contact.lead')}</p>
       </div>
     </section>
   )

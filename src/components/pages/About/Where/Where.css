@@ -1,0 +1,116 @@
+.about-where {
+  background: var(--burgundy);
+  color: var(--cream);
+}
+
+.about-where__header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  justify-items: end;
+  padding-block: clamp(72px, 10vh, 128px) clamp(36px, 5vh, 56px);
+}
+
+.about-where__header .section-label {
+  justify-self: start;
+}
+
+.about-where__heading {
+  margin: 0;
+  max-width: 10ch;
+  font-family: var(--sans);
+  font-size: clamp(40px, 6vw, 84px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.about-where__line {
+  display: block;
+  overflow: visible;
+  padding-block: 0.08em;
+}
+
+.about-where__line span {
+  display: block;
+}
+
+.about-where__line:first-child span {
+  color: rgba(244, 232, 217, 0.42);
+}
+
+.about-where__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3px;
+  padding-bottom: clamp(72px, 10vh, 120px);
+}
+
+.about-where__cell {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.about-where__cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s var(--ease);
+}
+
+.about-where__cell:hover img {
+  transform: scale(1.05);
+}
+
+.about-where__cell::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 46%;
+  background: linear-gradient(180deg, transparent, rgba(72, 20, 32, 0.55));
+  pointer-events: none;
+}
+
+.about-where__cell p {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  left: 20px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  font-size: clamp(18px, 2vw, 28px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.about-where__cell span {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+@media (max-width: 900px) {
+  .about-where__header {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .about-where__heading {
+    text-align: center;
+  }
+
+  .about-where__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import identityImage from '../../../../assets/home/ouridentity/identity.png'
+import { useI18n } from '../../../../i18n/I18n'
 import './Identity.css'
 
-const TITLE = 'Identiteti ynë.'
-
 function Identity() {
+  const { t, lang } = useI18n()
+  const title = t('home.identity.title')
   const rootRef = useRef(null)
   const [typed, setTyped] = useState('')
 
@@ -17,7 +18,7 @@ function Identity() {
 
     const type = () => {
       if (reduce) {
-        setTyped(TITLE)
+        setTyped(title)
         return
       }
 
@@ -25,8 +26,8 @@ function Identity() {
       let i = 0
       intervalId = window.setInterval(() => {
         i += 1
-        setTyped(TITLE.slice(0, i))
-        if (i >= TITLE.length) window.clearInterval(intervalId)
+        setTyped(title.slice(0, i))
+        if (i >= title.length) window.clearInterval(intervalId)
       }, 42)
     }
 
@@ -44,19 +45,19 @@ function Identity() {
       observer.disconnect()
       window.clearInterval(intervalId)
     }
-  }, [])
+  }, [title, lang])
 
   return (
-    <section className="identity" id="identity" aria-label="Identiteti ynë" ref={rootRef}>
+    <section className="identity" id="identity" aria-label={t('home.identity.label')} ref={rootRef}>
       <figure className="identity__bleed">
-        <img src={identityImage} alt="Peceta NT Catering" />
+        <img src={identityImage} alt={t('home.identity.alt')} />
         <h2 className="identity__title">
           <span className="identity__ghost" aria-hidden>
-            {TITLE}
+            {title}
           </span>
           <span className="identity__typed">
             {typed}
-            {typed !== TITLE ? (
+            {typed !== title ? (
               <span className="identity__caret" aria-hidden>
                 |
               </span>

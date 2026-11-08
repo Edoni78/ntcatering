@@ -4,34 +4,15 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import SectionLabel from '../../../shared/SectionLabel/SectionLabel'
+import { useI18n } from '../../../../i18n/I18n'
 import './Faq.css'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
-const questions = [
-  {
-    q: 'Sa herë përpara duhet të rezervoj?',
-    a: 'Katër deri gjashtë javë për shumicën e eventeve. Festat e mëdha i planifikojmë së bashku, zakonisht dy muaj më herët.',
-  },
-  {
-    q: 'A shërbeni edhe jashtë qytetit?',
-    a: 'Po. Udhëtojmë për evente në kopësht, vila dhe ambiente të zgjedhura, me marrëveshje paraprake për logjistikën.',
-  },
-  {
-    q: 'Çfarë ndodh me alergjitë dhe dietat?',
-    a: 'Menuja përshtatet. Na tregoni kufizimet që në fillim, që kuzhina t’i ketë parasysh në çdo pjatë.',
-  },
-  {
-    q: 'A mund të ndryshohet menuja?',
-    a: 'Po. Tre menutë janë pikënisje. I kompozojmë sipas numrit të mysafirëve, stinës dhe stilistikës së eventit.',
-  },
-  {
-    q: 'Si fillojmë?',
-    a: 'Dërgoni një mesazh me datën, vendin dhe numrin e përafërt. Një fjali mjafton për të hapur bisedën.',
-  },
-]
-
 function Faq() {
+  const { t } = useI18n()
+  const heading = t('home.faq.heading')
+  const questions = t('home.faq.items')
   const rootRef = useRef(null)
   const [open, setOpen] = useState(0)
 
@@ -66,23 +47,20 @@ function Faq() {
   )
 
   return (
-    <section className="faq" id="contact" aria-label="Pyetje" ref={rootRef}>
+    <section className="faq" id="contact" aria-label={t('home.faq.label')} ref={rootRef}>
       <div className="container faq__inner">
         <div className="faq__side">
-          <SectionLabel tone="burgundy">Pyetje</SectionLabel>
+          <SectionLabel tone="burgundy">{t('home.faq.label')}</SectionLabel>
         </div>
         <div className="faq__main">
           <h2 className="faq__heading">
-            <span className="faq__line">
-              <span>Para se</span>
-            </span>
-            <span className="faq__line">
-              <span>të shkruani.</span>
-            </span>
+            {heading.map((line) => (
+              <span className="faq__line" key={line}>
+                <span>{line}</span>
+              </span>
+            ))}
           </h2>
-          <p className="faq__lead">
-            Pesë pyetjet që vijnë pothuajse në çdo mesazh të parë.
-          </p>
+          <p className="faq__lead">{t('home.faq.lead')}</p>
 
           <ul className="faq__list">
             {questions.map((item, index) => {

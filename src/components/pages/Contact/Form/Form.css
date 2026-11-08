@@ -25,7 +25,7 @@
   font-family: var(--sans);
   font-size: clamp(40px, 6vw, 84px);
   font-weight: 500;
-  line-height: 0.95;
+  line-height: 1.12;
   letter-spacing: -0.04em;
   text-align: right;
   text-transform: uppercase;
@@ -33,8 +33,8 @@
 
 .contact-form__line {
   display: block;
-  overflow: hidden;
-  padding-block: 0.06em;
+  overflow: visible;
+  padding-block: 0.08em;
 }
 
 .contact-form__line span {
@@ -128,6 +128,13 @@
   margin-top: 12px;
 }
 
+.contact-form__error {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: #f0c2c2;
+  font-size: 14px;
+}
+
 .contact-form__thanks {
   margin: 0;
   max-width: 28ch;
@@ -141,11 +148,11 @@
 @media (max-width: 800px) {
   .contact-form__header {
     grid-template-columns: 1fr;
-    justify-items: start;
+    justify-items: center;
   }
 
   .contact-form__heading {
-    text-align: left;
+    text-align: center;
   }
 
   .contact-form__form {

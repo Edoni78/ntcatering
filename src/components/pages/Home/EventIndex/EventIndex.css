@@ -20,14 +20,15 @@
   font-family: var(--sans);
   font-size: clamp(40px, 6.4vw, 88px);
   font-weight: 500;
-  line-height: 0.92;
+  line-height: 1.12;
   letter-spacing: -0.04em;
   text-transform: uppercase;
 }
 
 .event-index__line {
   display: block;
-  overflow: hidden;
+  overflow: visible;
+  padding-block: 0.06em;
 }
 
 .event-index__line span {
@@ -163,6 +164,10 @@
   .event-index__header,
   .event-index__body {
     grid-template-columns: 1fr;
+  }
+
+  .event-index__heading {
+    font-size: clamp(32px, 9vw, 48px);
   }
 
   .event-index__media {

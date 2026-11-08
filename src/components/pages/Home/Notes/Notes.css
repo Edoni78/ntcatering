@@ -20,7 +20,7 @@
 
 .notes__line {
   display: block;
-  overflow: hidden;
+  overflow: visible;
   padding-block: 0.08em;
 }
 

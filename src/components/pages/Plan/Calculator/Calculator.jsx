@@ -1,30 +1,10 @@
 import { useState } from 'react'
 import SectionLabel from '../../../shared/SectionLabel/SectionLabel'
+import { useI18n } from '../../../../i18n/I18n'
 import './Calculator.css'
 
-const menus = [
-  {
-    id: 'menu-1',
-    index: '01',
-    title: 'Menu 1',
-    text: 'Për pritje të lehta, me zgjedhje të kujdesshme në tryezë.',
-    price: 8,
-  },
-  {
-    id: 'menu-2',
-    index: '02',
-    title: 'Menu 2',
-    text: 'Më e plotë, me meze, tortilla dhe ëmbëlsira.',
-    price: 13.5,
-  },
-  {
-    id: 'menu-3',
-    index: '03',
-    title: 'Menu 3',
-    text: 'Menuja më e pasur, me fli dhe tre lloje brusketash.',
-    price: 15.5,
-  },
-]
+const prices = [8, 13.5, 15.5]
+const ids = ['menu-1', 'menu-2', 'menu-3']
 
 const MIN_GUESTS = 1
 const MAX_GUESTS = 500
@@ -37,7 +17,14 @@ function formatEuro(value) {
 }
 
 function Calculator() {
-  const [menuId, setMenuId] = useState(menus[0].id)
+  const { t } = useI18n()
+  const heading = t('plan.calc.heading')
+  const menus = t('home.menus.items').map((item, index) => ({
+    ...item,
+    id: ids[index],
+    price: prices[index],
+  }))
+  const [menuId, setMenuId] = useState(ids[0])
   const [guests, setGuests] = useState(40)
 
   const menu = menus.find((item) => item.id === menuId) ?? menus[0]
@@ -52,18 +39,17 @@ function Calculator() {
     <section className="plan-calc" id="kalkulatori" aria-labelledby="plan-calc-title">
       <div className="container plan-calc__inner">
         <header className="plan-calc__header">
-          <SectionLabel>Kalkulatori</SectionLabel>
+          <SectionLabel>{t('plan.calc.label')}</SectionLabel>
           <h2 className="plan-calc__heading" id="plan-calc-title">
-            <span className="plan-calc__line">
-              <span>Zgjidhni menunë</span>
-            </span>
-            <span className="plan-calc__line">
-              <span>dhe mysafirët.</span>
-            </span>
+            {heading.map((line) => (
+              <span className="plan-calc__line" key={line}>
+                <span>{line}</span>
+              </span>
+            ))}
           </h2>
         </header>
 
-        <div className="plan-calc__menus" role="radiogroup" aria-label="Zgjidhni menunë">
+        <div className="plan-calc__menus" role="radiogroup" aria-label={t('plan.calc.group')}>
           {menus.map((item) => {
             const selected = item.id === menu.id
             return (
@@ -80,7 +66,7 @@ function Calculator() {
                 <p className="plan-calc__text">{item.text}</p>
                 <p className="plan-calc__price">
                   <span className="plan-calc__amount">{formatEuro(item.price)}</span>
-                  <span className="plan-calc__unit">€ / për person</span>
+                  <span className="plan-calc__unit">{t('plan.calc.unit')}</span>
                 </p>
               </button>
             )
@@ -89,9 +75,9 @@ function Calculator() {
 
         <div className="plan-calc__controls">
           <div className="plan-calc__guests">
-            <p className="plan-calc__label">Numri i mysafirëve</p>
+            <p className="plan-calc__label">{t('plan.calc.guests')}</p>
             <div className="plan-calc__stepper">
-              <button type="button" aria-label="Pakëso" onClick={() => setCount(guests - 1)}>
+              <button type="button" aria-label={t('plan.calc.minus')} onClick={() => setCount(guests - 1)}>
                 −
               </button>
               <input
@@ -100,22 +86,22 @@ function Calculator() {
                 max={MAX_GUESTS}
                 value={guests}
                 onChange={(event) => setCount(Number(event.target.value) || MIN_GUESTS)}
-                aria-label="Numri i mysafirëve"
+                aria-label={t('plan.calc.guests')}
               />
-              <button type="button" aria-label="Shto" onClick={() => setCount(guests + 1)}>
+              <button type="button" aria-label={t('plan.calc.plus')} onClick={() => setCount(guests + 1)}>
                 +
               </button>
             </div>
           </div>
 
           <div className="plan-calc__total">
-            <p className="plan-calc__label">Totali për {guests} persona</p>
+            <p className="plan-calc__label">{t('plan.calc.total', { guests })}</p>
             <p className="plan-calc__sum">
               <span>{formatEuro(total)}</span>
               <span>€</span>
             </p>
             <p className="plan-calc__note">
-              {menu.title} · {formatEuro(menu.price)} € për person
+              {t('plan.calc.note', { menu: menu.title, price: formatEuro(menu.price) })}
             </p>
           </div>
         </div>

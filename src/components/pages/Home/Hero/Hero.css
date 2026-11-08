@@ -77,8 +77,8 @@
 
 .hero__line {
   display: block;
-  overflow: hidden;
-  padding-block: 0.06em;
+  overflow: visible;
+  padding-block: 0.08em;
 }
 
 .hero__line span {

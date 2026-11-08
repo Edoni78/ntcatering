@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import Cta from '../Cta/Cta'
+import Path from '../Path/Path'
 import Faq from '../Faq/Faq'
 import './Finale.css'
 
@@ -72,6 +73,7 @@ function Finale() {
       <div className="finale__wash" aria-hidden />
       <div className="finale__content">
         <Cta />
+        <Path />
         <Faq />
       </div>
     </div>

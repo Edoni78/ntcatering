@@ -3,28 +3,46 @@ import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import logo from '../../../assets/brand.png'
+import { useI18n } from '../../../i18n/I18n'
 import './Navbar.css'
 
 gsap.registerPlugin(useGSAP)
 
-const leftLinks = [
-  { href: '/#services', label: 'Shërbimet' },
-  { href: '/#about', label: 'Rreth nesh' },
-]
+function LangSwitch({ compact = false }) {
+  const { lang, setLang, t } = useI18n()
 
-const rightLinks = [
-  { href: '/#gallery', label: 'Galeria' },
-  { to: '/kontakt', label: 'Kontakti' },
-]
-
-const menuLinks = [...leftLinks, ...rightLinks]
+  return (
+    <div className={`navbar__lang${compact ? ' navbar__lang--menu' : ''}`} role="group" aria-label={t('nav.lang')}>
+      <button type="button" className={lang === 'sq' ? 'is-on' : ''} onClick={() => setLang('sq')}>
+        SQ
+      </button>
+      <span aria-hidden>/</span>
+      <button type="button" className={lang === 'en' ? 'is-on' : ''} onClick={() => setLang('en')}>
+        EN
+      </button>
+    </div>
+  )
+}
 
 function Navbar() {
+  const { t } = useI18n()
   const navRef = useRef(null)
   const menuRef = useRef(null)
   const wasOpen = useRef(false)
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+
+  const leftLinks = [
+    { to: '/sherbimet', label: t('nav.services') },
+    { to: '/rreth-nesh', label: t('nav.about') },
+  ]
+
+  const rightLinks = [
+    { to: '/galeria', label: t('nav.gallery') },
+    { to: '/kontakt', label: t('nav.contact') },
+  ]
+
+  const menuLinks = [...leftLinks, ...rightLinks]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -129,11 +147,11 @@ function Navbar() {
       <div className="navbar__frost" aria-hidden />
       <div className="navbar__bar">
         <div className="container navbar__inner">
-          <nav className="navbar__cluster navbar__cluster--left" aria-label="Kryesore">
+          <nav className="navbar__cluster navbar__cluster--left" aria-label={t('nav.primary')}>
             {leftLinks.map((link) => (
-              <a key={link.href} className="navbar__link" href={link.href}>
+              <Link key={link.to} className="navbar__link" to={link.to} onClick={closeMenu}>
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -142,28 +160,24 @@ function Navbar() {
           </Link>
 
           <div className="navbar__cluster navbar__cluster--right">
-            <nav className="navbar__cluster-links" aria-label="Dytësore">
-              {rightLinks.map((link) =>
-                link.to ? (
-                  <Link key={link.to} className="navbar__link" to={link.to} onClick={closeMenu}>
-                    {link.label}
-                  </Link>
-                ) : (
-                  <a key={link.href} className="navbar__link" href={link.href}>
-                    {link.label}
-                  </a>
-                ),
-              )}
+            <nav className="navbar__cluster-links" aria-label={t('nav.secondary')}>
+              {rightLinks.map((link) => (
+                <Link key={link.to} className="navbar__link" to={link.to} onClick={closeMenu}>
+                  {link.label}
+                </Link>
+              ))}
             </nav>
 
+            <LangSwitch />
+
             <Link className="navbar__cta" to="/planifiko-eventin" onClick={closeMenu}>
-              Planifiko eventin
+              {t('nav.plan')}
             </Link>
 
             <button
               className={`navbar__toggle ${open ? 'is-open' : ''}`}
               type="button"
-              aria-label={open ? 'Mbyll menunë' : 'Hap menunë'}
+              aria-label={open ? t('nav.close') : t('nav.open')}
               aria-expanded={open}
               aria-controls="mobile-navigation"
               onClick={() => setOpen((value) => !value)}
@@ -182,35 +196,24 @@ function Navbar() {
         aria-hidden={!open}
       >
         <div className="navbar__menu-pattern" aria-hidden="true" />
-        <nav className="navbar__menu-nav" aria-label="Menuja">
-          {menuLinks.map((link, index) =>
-            link.to ? (
-              <Link
-                key={link.to}
-                className="navbar__menu-item navbar__menu-link"
-                to={link.to}
-                onClick={closeMenu}
-              >
-                <span className="navbar__menu-index">{String(index + 1).padStart(2, '0')}</span>
-                <span className="navbar__menu-label">{link.label}</span>
-              </Link>
-            ) : (
-              <a
-                key={link.href}
-                className="navbar__menu-item navbar__menu-link"
-                href={link.href}
-                onClick={closeMenu}
-              >
-                <span className="navbar__menu-index">{String(index + 1).padStart(2, '0')}</span>
-                <span className="navbar__menu-label">{link.label}</span>
-              </a>
-            ),
-          )}
+        <nav className="navbar__menu-nav" aria-label={t('nav.menu')}>
+          {menuLinks.map((link, index) => (
+            <Link
+              key={link.to}
+              className="navbar__menu-item navbar__menu-link"
+              to={link.to}
+              onClick={closeMenu}
+            >
+              <span className="navbar__menu-index">{String(index + 1).padStart(2, '0')}</span>
+              <span className="navbar__menu-label">{link.label}</span>
+            </Link>
+          ))}
           <Link className="navbar__menu-item navbar__menu-cta" to="/planifiko-eventin" onClick={closeMenu}>
-            Planifiko eventin
+            {t('nav.plan')}
           </Link>
+          <LangSwitch compact />
         </nav>
-        <p className="navbar__menu-item navbar__menu-foot">Evente të kuruara me kujdes</p>
+        <p className="navbar__menu-item navbar__menu-foot">{t('nav.foot')}</p>
       </div>
     </header>
   )
